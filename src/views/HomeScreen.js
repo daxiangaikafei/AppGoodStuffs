@@ -32,7 +32,7 @@ class HomeScreen extends Component {
         />
         <View style={styles.title}>
           <View style={styles.mainTitle}>
-            <Text style={styles.mainTitleStart}>全球精品</Text> 
+            <Text style={styles.mainTitleStart}>全球精品1</Text> 
             <Text style={styles.mainTitleCenter}>|</Text>
             <Text style={styles.mainTitleEnd}>智能导购</Text>
           </View>
