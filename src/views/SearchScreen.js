@@ -92,7 +92,9 @@ class SearchScreen extends Component {
           searchTxtList: [],
           isSearchTxtListShow: false,
           isSearchResult: false,
-          isSearched: false
+          isSearched: false,
+          tabActive: 0,
+          sort: 1,
         })
       }
     });
@@ -129,7 +131,9 @@ class SearchScreen extends Component {
     this.setState({
       // searchTxtList: [],
       isSearchTxtListShow: false,
-      searchTxt
+      searchTxt,
+      tabActive: 0,
+      sort: 1,
     }, ()=>{
       this._goSearch()
     })
@@ -170,7 +174,7 @@ class SearchScreen extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.status}>
-          <StatusBar translucent barStyle="light-content"/>
+          <StatusBar translucent barStyle="light-content" backgroundColor='#FB354E'/>
         </View>
         {this.renderTop()}          
         <View style={styles.content}>
@@ -928,7 +932,7 @@ const styles = StyleSheet.create({
   },
   price: {
     fontSize: 16,
-    height: 16,    
+    height: 18,    
     color: '#F5204C',
     fontWeight : '600',  
     // flex: 1,
@@ -937,12 +941,9 @@ const styles = StyleSheet.create({
   },
   priceFloat: {
     fontSize: 12,
-    height: 12,    
+    height: 14,    
     color: '#F5204C',
     fontWeight : '600',  
-    // flex: 1,
-    // flexDirection:"column",   
-    // justifyContent: 'flex-end',
   },
   priceRebateTxt: {
     fontSize: 10,

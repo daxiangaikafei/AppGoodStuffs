@@ -152,7 +152,7 @@ class MyScreen extends Component {
       <Image 
         source={require('../img/my-bg.png')}
         resizeMode={Image.resizeMode.cover}          
-        style={{...StyleSheet.absoluteFillObject, width:null,height: width * 0.4,resizeMode:'cover'}}
+        style={{...StyleSheet.absoluteFillObject, width:null,height: width * 0.4+(Platform.OS==='ios'?0:20),resizeMode:'cover'}}
       />
         <View style={styles.userInfo}>
           <View style={styles.userInfoTop}>
@@ -296,7 +296,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   userInfo: {
-    height: width * 0.4 - STATUSBAR_HEIGHT,
+    height: width * 0.4 - (Platform.OS==='ios'?20:0),
     backgroundColor: 'transparent',
     flexDirection:"column",
     justifyContent: 'flex-start',
