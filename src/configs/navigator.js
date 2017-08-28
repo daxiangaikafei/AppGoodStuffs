@@ -538,12 +538,78 @@ const WelcomeNavigator = StackNavigator(StackNavigatorConfig, {
   initialRouteName: 'Welcome',
 });
 /************************* StackNavigator Config End *************************/
+function getCurrentRouteName(navigationState) {
+  if (!navigationState) {
+      return null;
+  }
+  const route = navigationState.routes[navigationState.index];
+  if (route.routes) {
+      return getCurrentRouteName(route);
+  }
+  return route.routeName;
+}
 
 // module.exports = Navigator;
 module.exports = function (props) {
   // debugger;
   if (!props.isFirstLogin)
-    return <Navigator screenProps={{ dispatch: props.dispatch }} />
+    return <Navigator screenProps={{ dispatch: props.dispatch }} onNavigationStateChange={(prevState, currentState) => {
+      const currentScreen = getCurrentRouteName(currentState);
+      const prevScreen = getCurrentRouteName(prevState);
+      if (prevScreen !== currentScreen) {
+          if (Platform.OS == 'ios') {
+              switch (currentScreen) {
+                  case 'HomeTab':
+                  case 'TimeLimit':
+                  case 'Order':
+                  case 'Convert':
+                  case 'Building':
+                  case 'Detail':                        
+                  case 'JifenbaoHelp':
+                      StatusBar.setBarStyle('dark-content', true);
+                      break;
+                  case 'Coupon':
+                  case 'MyTab':
+                  case 'ConvertDetail':
+                  case 'Search':
+                      StatusBar.setBarStyle('light-content', true);
+                      break;
+                  default:
+                      StatusBar.setBarStyle('default', true);
+                      break;
+              }
+          } else {
+              switch (currentScreen) {
+                  case 'HomeTab':
+                  case 'TimeLimit':
+                  case 'Order':
+                  case 'Convert':
+                  case 'Building':
+                  case 'Detail':
+                  case 'JifenbaoHelp':
+                      StatusBar.setBarStyle('dark-content', true);
+                      StatusBar.setBackgroundColor('#fff');
+                      break;
+                  case 'Coupon':
+                  case 'Search':
+                      StatusBar.setBarStyle('light-content', true);
+                      StatusBar.setBackgroundColor('#FB354E');
+                      break;
+                  case 'MyTab':
+                      StatusBar.setBarStyle('light-content', true);
+                      StatusBar.setBackgroundColor('#F86965');
+                      break;
+                  case 'ConvertDetail':
+                      StatusBar.setBarStyle('light-content', true);
+                      StatusBar.setBackgroundColor('#259DFC');
+                      break;
+                  default:
+                      StatusBar.setBarStyle('default', true);
+                      break;
+              }
+          }
+      }
+  }}/>
   else
     return <WelcomeNavigator screenProps={{ dispatch: props.dispatch }} />
 }
