@@ -116,10 +116,10 @@ class OrderScreen extends Component {
             // onRefresh={this._refresh}
             // renderItem={this.renderItem}
             renderItem={({item}) => {
-              switch (item.status) {
+              switch (tabActive) {
                 case 0:
                 case 4:
-                  return (
+                  return item.status == tabActive && (
                     <View style={{paddingLeft:10,backgroundColor:'#fff'}} id={item.id}>
                       <View style={{paddingVertical:5,borderBottomColor:'#F1F2F4',borderBottomWidth:StyleSheet.hairlineWidth}}>
                         <Text style={{color:'#949596',fontSize:12,}}>提交时间:{item.createTime}</Text>
@@ -131,11 +131,12 @@ class OrderScreen extends Component {
                 case 1:
                 case 2:
                 case 3:
-                  return (
+                case 5:
+                  return (tabActive == 5 || item.status == tabActive) && (
                     <View style={{paddingLeft:10,backgroundColor:'#fff'}} id={item.id}>
                       <View style={{paddingVertical:5,paddingRight:10,borderBottomColor:'#F1F2F4',borderBottomWidth:StyleSheet.hairlineWidth,flexDirection:"row",alignItems:'center',justifyContent:'space-between',}}>
                         <Text style={{color:'#949596',fontSize:12,}}>提交时间:{item.createTime}</Text>
-                        {this.state.tabActive==5&&<Text style={{color:orderStatusColors[item.status],fontSize:12,}}>{orderText[item.status]}</Text>}
+                        {tabActive==5&&<Text style={{color:orderStatusColors[item.status],fontSize:12,}}>{orderText[item.status]}</Text>}
                       </View>
                       <View style={{flexDirection:"row",alignItems:'center',justifyContent:'space-between',}}>
                         <View style={{flex:1,flexDirection:"column",alignItems:'stretch',justifyContent:'flex-start',}}>
