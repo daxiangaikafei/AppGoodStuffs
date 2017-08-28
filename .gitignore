@@ -56,3 +56,4 @@ fastlane/screenshots
 ios/
 android/
 android-*/
+src/configs/sdkConfig.js
