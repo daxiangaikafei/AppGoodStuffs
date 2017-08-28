@@ -20,7 +20,6 @@ import CommonStatusBar from '../widget/CommonStatusBar';
 import { List } from 'react-native-elements'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import DatePicker from 'react-native-datepicker'
-import ModalWidget from '../widget/ModalWidget';
 
 import api from '../api/index';
 

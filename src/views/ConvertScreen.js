@@ -216,7 +216,7 @@ class ConvertScreen extends Component {
                 />
               </View>
               {
-                errMsg && (<View style={{width:'100%',flexDirection:'row',justifyContent:'flex-start',alignItems:'center'}}>
+                errMsg!='' && (<View style={{width:'100%',flexDirection:'row',justifyContent:'flex-start',alignItems:'center'}}>
                     <Ionicons
                       name={'ios-alert-outline'}
                       size={14}
@@ -263,7 +263,7 @@ class ConvertScreen extends Component {
                 />
               </View>
               {
-                convertErrMsg && (<View style={{width:'100%',flexDirection:'row',justifyContent:'flex-start',alignItems:'center'}}>
+                convertErrMsg!='' && (<View style={{width:'100%',flexDirection:'row',justifyContent:'flex-start',alignItems:'center'}}>
                     <Ionicons
                       name={'ios-alert-outline'}
                       size={14}
